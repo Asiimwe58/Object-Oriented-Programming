@@ -1,0 +1,35 @@
+import java.util.Random;
+public class PassengerSource {
+    private Company company;
+    private Random random;
+    public PassengerSource(Company company) {
+        this.company = company;
+        this.random = new Random();
+    }
+    public boolean requestPickup() {
+        Location pickup = new Location(random.nextInt(101), random.nextInt(101));
+        Location destination = new Location(random.nextInt(101), random.nextInt(101));
+        Passenger passenger = new Passenger(pickup, destination);
+        return company.scheduleVehicle(passenger);
+    }
+}
+class Location {
+    private int x, y;
+
+    public Location(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+class Passenger {
+    private Location pickup, destination;
+    public Passenger(Location pickup, Location destination) {
+        this.pickup = pickup;
+        this.destination = destination;
+    }
+}
+class Company {
+    public boolean scheduleVehicle(Passenger passenger) {
+        return true; // Simulated success
+    }
+}
