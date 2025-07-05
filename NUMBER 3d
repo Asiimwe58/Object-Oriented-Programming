@@ -1,0 +1,29 @@
+import java.util.Arrays;
+public class AQIDashboard {
+    public static void main(String[] args) {
+        int[] aqiReadings = new int[30];
+        for (int i = 0; i < aqiReadings.length; i++) {
+            aqiReadings[i] = (int) (Math.random() * 300 + 1); 
+        }
+        System.out.println("AQI Readings for 30 Days:");
+        for (int i = 0; i < aqiReadings.length; i++) {
+            System.out.println("Day " + (i + 1) + ": AQI = " + aqiReadings[i]);
+        }
+        Arrays.sort(aqiReadings);
+        double medianAQI;
+        if (aqiReadings.length % 2 == 0) {
+            medianAQI = (aqiReadings[aqiReadings.length / 2 - 1] + aqiReadings[aqiReadings.length / 2]) / 2.0;
+        } else {
+            medianAQI = aqiReadings[aqiReadings.length / 2];
+        }
+        System.out.printf("\nMedian AQI Value: %.2f\n", medianAQI);
+
+        int hazardousDays = 0;
+        for (int aqi : aqiReadings) {
+            if (aqi > 200) {
+                hazardousDays++;
+            }
+        }
+        System.out.println("Number of Hazardous Days (AQI > 200): " + hazardousDays);
+    }
+}
