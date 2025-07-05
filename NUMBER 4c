@@ -1,0 +1,31 @@
+final class MedicalConstants {
+public static final double MAX_NORMAL_BP = 120.0; 
+}
+public class TestConstants {
+public static void main(String[] args) {
+System.out.println("Max Normal BP: " + MedicalConstants.MAX_NORMAL_BP);
+}
+}
+	
+Finally: the finally block executes code after a try-catch block regardless of whether an exception occurs, typically for cleanup 
+
+import java.io.*;	
+public class ReportGenerator {
+public static void main(String[] args) {
+FileWriter writer = null;
+try {
+writer = new FileWriter("report.txt");
+writer.write("Patient Report");
+} catch (IOException e) {
+System.out.println("Error writing to file: " + e.getMessage());
+} finally {
+try {
+if (writer != null) writer.close();
+System.out.println("File closed");
+} catch (IOException e) {
+System.out.println("Error closing file: " + e.getMessage());
+}
+}
+}
+}
+
