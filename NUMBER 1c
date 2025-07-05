@@ -1,0 +1,19 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+public class CompanyTest {
+    @Test
+    public void testScheduleVehicleSuccess() {
+        Company company = new Company();
+        Passenger passenger = new Passenger(new Location(10, 20), new Location(50, 60));
+        boolean result = company.scheduleVehicle(passenger);
+        assertTrue("Vehicle should be scheduled successfully", result);
+    }
+    @Test
+    public void testScheduleVehicleNoVehiclesAvailable() {
+        Company company = new Company();
+        company.setAllVehiclesBusy(); 
+        Passenger passenger = new Passenger(new Location(30, 40), new Location(70, 80));
+        boolean result = company.scheduleVehicle(passenger);
+        assertFalse("Scheduling should fail when no vehicles are available", result);
+    }
+}
