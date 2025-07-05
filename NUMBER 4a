@@ -1,0 +1,19 @@
+class FileHandler {
+    FILE* file;
+public:
+    FileHandler(const char* filename) { file = fopen(filename, "r"); }
+    ~FileHandler() { if(file) fclose(file); } 
+};
+
+
+java
+class FileHandler implements AutoCloseable {
+    private FileInputStream file;
+    public FileHandler(String filename) throws FileNotFoundException {
+        file = new FileInputStream(filename);
+    }
+    @Override
+    public void close() throws IOException { 
+        if(file != null) file.close();
+    }
+}
